@@ -1,4 +1,4 @@
-:root{
+﻿:root{
   --primary:#2563eb;
   --primary-dark:#1d4ed8;
   --primary-light:#3b82f6;
@@ -919,16 +919,12 @@ main.container a[href^="mailto"]{
 /* 2. FEATURE KARTLARI - HÉ™r ikonun Ã¶zÃ¼nÉ™mÉ™xsus animasiyasÄ± */
 /* Axtar (1-ci kart) - Lupa böyümə effekti */
 .three-column .col:nth-child(1) .icon{
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition:all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.three-column .col:nth-child(1) .icon:hover{
-  transform: scale(1.25) rotate(-10deg);
+.three-column .col:nth-child(1):hover .icon{
+  transform:scale(1.25) rotate(-10deg);
 }
-
-
-
-
 
 /* PaylaÅŸ (2-ci kart) - YuxarÄ± uÃ§uÅŸ effekti */
 .three-column .col:nth-child(2) .icon{
@@ -996,7 +992,8 @@ main.container a[href^="mailto"]{
 .contact-note li:nth-child(3){animation-delay:0.15s}
 .contact-note li:nth-child(4){animation-delay:0.2s}
 
-.contact-note li{opacity:1;
+.contact-note li{
+  opacity:0;
   animation:slideInLeft 0.5s ease forwards;
 }
 
@@ -1078,7 +1075,8 @@ main.container a[href^="mailto"]{
 }
 
 /* 6. FORMAT LIST - Wave entrance */
-.format-list li{opacity:1;
+.format-list li{
+  opacity:0;
   animation:waveIn 0.4s ease forwards;
 }
 
@@ -1159,67 +1157,3 @@ main.container a[href^="mailto"]{
 
 
 
-
-
-
-/* Axtar ikonu - Shake animasiyası */
-@keyframes searchShake {
-  0% { transform: rotate(0deg); }
-  20% { transform: rotate(-15deg) scale(1.1); }
-  40% { transform: rotate(15deg) scale(1.2); }
-  60% { transform: rotate(-10deg) scale(1.15); }
-  80% { transform: rotate(10deg) scale(1.1); }
-  100% { transform: rotate(0deg) scale(1); }
-}
-
-
-.three-column .col:nth-child(1):hover .icon {
-  animation: searchShake 0.6s ease-in-out;
-}
-
-
-/* Hero düymələri - Soldan dolma animasiyası */
-.hero-buttons .btn {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  z-index: 1;
-}
-
-.hero-buttons .btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-  border-radius: var(--radius);
-  transition: width 0.3s ease;
-  z-index: -1;
-}
-
-.hero-buttons .btn:hover::before {
-  width: 100%;
-}
-
-.hero-buttons .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
-}
-
-.hero-buttons .btn.secondary:hover {
-  color: #fff;
-  border-color: transparent;
-}
-
-
-/* Konspektlərə bax düyməsi - Ağ rəng dolur */
-.hero-buttons .btn:not(.secondary)::before {
-  left: 0; right: auto;
-  background: rgba(255, 255, 255, 0.95);
-}
-
-.hero-buttons .btn:not(.secondary):hover {
-  color: var(--primary);
-}

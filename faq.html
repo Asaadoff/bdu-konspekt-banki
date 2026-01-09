@@ -3,14 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>FAQ — BDU Konspekt Bankı</title>
+  <meta name="author" content="Ümid Əsədov">
+  <meta name="description" content="BDU Konspekt Bankı haqqında tez-tez verilən suallar. Platforma necə işləyir?">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>FAQ  BDU Konspekt Bankı</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="loader-wrapper" id="loader">
+    <div class="loader"></div>
+  </div>
+
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <h1>BDU Konspekt Bankı</h1>
+        <a href="index.html" class="brand-link">
+          <img src="favicon.svg" alt="Logo" class="brand-logo">
+          <h1>BDU Konspekt Bankı</h1>
+        </a>
       </div>
       <button class="menu-toggle" id="menu-toggle" aria-label="Menyu">
         <span></span>
@@ -20,7 +30,7 @@
       <nav class="top-nav" id="top-nav">
         <a href="index.html">Ana səhifə</a>
         <a href="konspektler.html">Konspektlər</a>
-        <a href="konspekt_yukle.html">Konspekt yüklə</a>
+        <a href="https://forms.gle/e7re5LX4epzQLPA39" target="_blank">Konspekt yüklə</a>
         <a href="qaydalar.html">Qaydalar</a>
         <a href="faq.html" class="active">FAQ</a>
         <a href="contact.html">Əlaqə</a>
@@ -29,25 +39,57 @@
   </header>
 
   <main class="container">
-    <h2>FAQ</h2>
+    <h2>Tez-tez verilən suallar</h2>
+
     <div class="faq-item">
-      <p class="q"><strong>1) Konspektləri necə yükləyə bilərəm?</strong></p>
-      <p class="a">Konspekt yükləmək üçün "Konspekt yüklə" səhifəsindən Google Form vasitəsilə fayl göndərin.</p>
+      <p class="q">Bu platforma nə üçündür?</p>
+      <p class="a">BDU Konspekt Bankı Bakı Dövlət Universiteti tələbələrinin mühazirə, konspekt və digər tədris materiallarını bir-biri ilə paylaşması üçün yaradılmış könüllü platformadır.</p>
     </div>
 
     <div class="faq-item">
-      <p class="q"><strong>2) Hansı fayl formatları qəbul olunur?</strong></p>
-      <p class="a">PDF və DOCX formatları qəbul olunur, maksimum 100 MB.</p>
+      <p class="q">Buraya kim material yükləyə bilər?</p>
+      <p class="a">İstənilən BDU tələbəsi və ya məzunu öz qeydlərini yükləyə bilər. Materiallar yoxlanıldıqdan sonra sayta əlavə olunur.</p>
     </div>
 
     <div class="faq-item">
-      <p class="q"><strong>3) Fayllar harada saxlanır?</strong></p>
-      <p class="a">Fayllar Google Drive qovluğunda saxlanılır; hər fakültə üçün ayrıca folder təyin edin.</p>
+      <p class="q">Yüklənən materiallar yoxlanılır?</p>
+      <p class="a">Bəli. Hər bir material əvvəlcə admin tərəfindən yoxlanılır, uyğun olduqda dərc edilir.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="q">Hansı formatlarda fayl yükləmək olar?</p>
+      <p class="a">Aşağıdakı formatlar qəbul olunur:</p>
+      <ul class="format-list">
+        <li>📄 PDF</li>
+        <li>📝 Word (.doc, .docx)</li>
+        <li>📊 Excel (.xls, .xlsx)</li>
+        <li>📽 PowerPoint (.ppt, .pptx)</li>
+        <li>🖼 Şəkil (JPG, PNG)</li>
+        <li>📁 Digər sənəd formatları</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <p class="q">Materiallara görə pul ödənilir?</p>
+      <p class="a">Xeyr. Platforma tamamilə pulsuzdur  həm yükləmək, həm də əldə etmək.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="q">Müəllif hüquqları necə qorunur?</p>
+      <p class="a">Yüklənən hər materialda müəllifin adı göstərilir. Razılıq olmadan materialın kommersiya məqsədi ilə istifadəsi qadağandır.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="q">Problemlə qarşılaşsam, kimə müraciət edə bilərəm?</p>
+      <p class="a">Əlaqə səhifəsindəki e-mail ünvanına yaza bilərsiniz.</p>
     </div>
   </main>
 
   <footer class="site-footer">
-    <div class="container">© 2026 BDU Konspekt Bankı</div>
+    <div class="container">
+      <p> 2026 BDU Konspekt Bankı. All rights reserved.</p>
+      <p class="author">Hazırladı: Ümid Əsədov</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>

@@ -3,14 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="author" content="Ümid Əsədov">
+  <meta name="description" content="BDU Konspekt Bankına konspekt yüklə. PDF, Word, Excel və digər formatlar qəbul olunur.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Konspekt yüklə — BDU Konspekt Bankı">
+  <meta property="og:description" content="Konspektini yüklə və digər tələbələrlə paylaş.">
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <title>Konspekt yüklə — BDU Konspekt Bankı</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div class="loader-wrapper" id="loader">
+    <div class="loader"></div>
+  </div>
+
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <h1>BDU Konspekt Bankı</h1>
+        <a href="index.html" class="brand-link">
+          <img src="favicon.svg" alt="Logo" class="brand-logo">
+          <h1>BDU Konspekt Bankı</h1>
+        </a>
       </div>
       <button class="menu-toggle" id="menu-toggle" aria-label="Menyu">
         <span></span>
@@ -20,7 +37,7 @@
       <nav class="top-nav" id="top-nav">
         <a href="index.html">Ana səhifə</a>
         <a href="konspektler.html">Konspektlər</a>
-        <a href="konspekt_yukle.html" class="active">Konspekt yüklə</a>
+        <a href="https://forms.gle/e7re5LX4epzQLPA39" target="_blank" class="active">Konspekt yüklə</a>
         <a href="qaydalar.html">Qaydalar</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Əlaqə</a>
@@ -40,7 +57,10 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">© 2026 BDU Konspekt Bankı</div>
+    <div class="container">
+      <p>© 2026 BDU Konspekt Bankı. All rights reserved.</p>
+      <p class="author">Hazırladı: Ümid Əsədov</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>

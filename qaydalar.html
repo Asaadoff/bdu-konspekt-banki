@@ -3,14 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Qaydalar — BDU Konspekt Bankı</title>
+  <meta name="author" content="Ümid Əsədov">
+  <meta name="description" content="BDU Konspekt Bankı qaydaları. Material yükləmə və istifadə şərtləri.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Qaydalar  BDU Konspekt Bankı</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="loader-wrapper" id="loader">
+    <div class="loader"></div>
+  </div>
+
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <h1>BDU Konspekt Bankı</h1>
+        <a href="index.html" class="brand-link">
+          <img src="favicon.svg" alt="Logo" class="brand-logo">
+          <h1>BDU Konspekt Bankı</h1>
+        </a>
       </div>
       <button class="menu-toggle" id="menu-toggle" aria-label="Menyu">
         <span></span>
@@ -20,7 +30,7 @@
       <nav class="top-nav" id="top-nav">
         <a href="index.html">Ana səhifə</a>
         <a href="konspektler.html">Konspektlər</a>
-        <a href="konspekt_yukle.html">Konspekt yüklə</a>
+        <a href="https://forms.gle/e7re5LX4epzQLPA39" target="_blank">Konspekt yüklə</a>
         <a href="qaydalar.html" class="active">Qaydalar</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Əlaqə</a>
@@ -30,30 +40,62 @@
 
   <main class="container">
     <h2>Qaydalar</h2>
+    <p>Platformadan istifadə edərkən aşağıdakı qaydalara riayət edin:</p>
 
-    <section>
-      <h3>Ümumi qaydalar</h3>
-      <p>Platforma yalnız təhsil məqsədləri üçün istifadə olunur. Zəruri hallarda müəllif hüquqlarına hörmət edilməlidir.</p>
-    </section>
+    <div class="faq-item">
+      <p class="q">1. Yalnız öz materiallarınızı yükləyin</p>
+      <p class="a">Yüklədiyiniz konspekt, mühazirə və ya qeyd sizin şəxsi əməyiniz olmalıdır. Başqasına məxsus materialı icazəsiz paylaşmaq qadağandır.</p>
+    </div>
 
-    <section>
-      <h3>Yükləmə şərtləri</h3>
-      <p>Yalnız PDF və DOCX fayllar qəbul olunur. Maksimum fayl ölçüsü 100 MB-dir. Yükləyən istifadəçi faylın müəllif hüquqlarından məsuldur.</p>
-    </section>
+    <div class="faq-item">
+      <p class="q">2. Keyfiyyətli və oxunaqlı materiallar paylaşın</p>
+      <p class="a">Yüklədiyiniz fayllar aydın, səliqəli və başa düşülən olmalıdır. Bulanıq şəkillər, yarımçıq qeydlər qəbul edilmir.</p>
+    </div>
 
-    <section>
-      <h3>Müəllif hüquqları</h3>
-      <p>Başqasına məxsus müəllif hüquqları qorunan materialın paylaşılması qadağandır. Hüquq pozuntusu aşkar edilərsə, fayl silinə bilər.</p>
-    </section>
+    <div class="faq-item">
+      <p class="q">3. Düzgün kateqoriya və fənn seçin</p>
+      <p class="a">Materialı yükləyərkən uyğun fakültə, ixtisas və fənn adını düzgün qeyd edin ki, digər tələbələr asanlıqla tapa bilsin.</p>
+    </div>
 
-    <section>
-      <h3>Fayl ölçüsü limiti</h3>
-      <p>100 MB.</p>
-    </section>
+    <div class="faq-item">
+      <p class="q">4. Qəbul olunan fayl formatları</p>
+      <p class="a">Aşağıdakı formatlar dəstəklənir:</p>
+      <ul class="format-list">
+        <li>📄 PDF</li>
+        <li>📝 Word (.doc, .docx)</li>
+        <li>📊 Excel (.xls, .xlsx)</li>
+        <li>📽 PowerPoint (.ppt, .pptx)</li>
+        <li>🖼 Şəkil (JPG, PNG)</li>
+        <li>📁 Digər sənəd formatları</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <p class="q">5. Admin yoxlaması</p>
+      <p class="a">Yüklənən hər material əvvəlcə admin tərəfindən yoxlanılır. Qaydalara uyğun olmayan materiallar dərc edilmir.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="q">6. Kommersiya məqsədi yoxdur</p>
+      <p class="a">Platforma tamamilə pulsuzdur. Materialları satmaq və ya kommersiya məqsədi ilə istifadə etmək qadağandır.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="q">7. Hörmətli davranış</p>
+      <p class="a">Digər istifadəçilərə və müəlliflərə qarşı hörmətli olun. Təhqiredici şərhlər və davranışlar qadağandır.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="q">8. Şikayət və təkliflər</p>
+      <p class="a">Hər hansı problem və ya təklifiniz varsa, Əlaqə səhifəsindən bizə yaza bilərsiniz.</p>
+    </div>
   </main>
 
   <footer class="site-footer">
-    <div class="container">© 2026 BDU Konspekt Bankı</div>
+    <div class="container">
+      <p> 2026 BDU Konspekt Bankı. All rights reserved.</p>
+      <p class="author">Hazırladı: Ümid Əsədov</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>

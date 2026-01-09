@@ -3,14 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Əlaqə — BDU Konspekt Bankı</title>
+  <meta name="author" content="Ümid Əsədov">
+  <meta name="description" content="BDU Konspekt Bankı ilə əlaqə. Suallar, təkliflər və əməkdaşlıq üçün bizə yazın.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Əlaqə  BDU Konspekt Bankı</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="loader-wrapper" id="loader">
+    <div class="loader"></div>
+  </div>
+
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <h1>BDU Konspekt Bankı</h1>
+        <a href="index.html" class="brand-link">
+          <img src="favicon.svg" alt="Logo" class="brand-logo">
+          <h1>BDU Konspekt Bankı</h1>
+        </a>
       </div>
       <button class="menu-toggle" id="menu-toggle" aria-label="Menyu">
         <span></span>
@@ -20,7 +30,7 @@
       <nav class="top-nav" id="top-nav">
         <a href="index.html">Ana səhifə</a>
         <a href="konspektler.html">Konspektlər</a>
-        <a href="konspekt_yukle.html">Konspekt yüklə</a>
+        <a href="https://forms.gle/e7re5LX4epzQLPA39" target="_blank">Konspekt yüklə</a>
         <a href="qaydalar.html">Qaydalar</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html" class="active">Əlaqə</a>
@@ -49,10 +59,18 @@
         <li>🤝 Əməkdaşlıq təklifləri</li>
       </ul>
     </div>
+
+    <div class="project-author">
+      <h3>Layihənin müəllifi</h3>
+      <p>Ümid Əsədov</p>
+    </div>
   </main>
 
   <footer class="site-footer">
-    <div class="container">© 2026 BDU Konspekt Bankı</div>
+    <div class="container">
+      <p> 2026 BDU Konspekt Bankı. All rights reserved.</p>
+      <p class="author">Hazırladı: Ümid Əsədov</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>

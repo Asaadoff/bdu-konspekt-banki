@@ -1,5 +1,13 @@
 // BDU Konspekt Bankı - JavaScript
 document.addEventListener('DOMContentLoaded', function(){
+  // Hide loader when page is ready
+  const loader = document.getElementById('loader');
+  if(loader){
+    setTimeout(function(){
+      loader.classList.add('hidden');
+    }, 500);
+  }
+  
   const nav = document.getElementById('top-nav');
   const menuToggle = document.getElementById('menu-toggle');
   
