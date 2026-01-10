@@ -7,7 +7,10 @@
   <meta name="description" content="BDU Konspekt Bankı ilə əlaqə. Suallar, təkliflər və əməkdaşlıq üçün bizə yazın.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <title>Əlaqə  BDU Konspekt Bankı</title>
-  <link rel="stylesheet" href="styles.css">
+      <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <meta name="theme-color" content="#667eea">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="loader-wrapper" id="loader">
@@ -43,11 +46,34 @@
     <p>Suallar, təkliflər və ya problemlər üçün bizə yazın:</p>
 
     <div class="contact-info">
-      <div class="contact-card">
-        <div class="contact-icon">📧</div>
-        <h3>E-mail</h3>
-        <p><a href="mailto:bdu.datastore@gmail.com">bdu.datastore@gmail.com</a></p>
-      </div>
+        <style>
+          @media (min-width: 900px) {
+            .contact-info-flex {
+              max-width: 800px !important;
+              gap: 48px !important;
+            }
+            .contact-info-flex .contact-card {
+              min-width: 320px !important;
+              min-height: 180px !important;
+              font-size: 1.13em;
+            }
+            .contact-info-flex .contact-icon {
+              font-size: 2.7em !important;
+            }
+          }
+        </style>
+        <div class="contact-info-flex" style="display: flex; justify-content: center; align-items: stretch; gap: 32px; flex-wrap: wrap; max-width:600px; margin:0 auto;">
+          <div class="contact-card" style="flex:1 1 0; min-width:220px; min-height:140px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div class="contact-icon">📧</div>
+            <h3 style="margin:8px 0 4px 0; font-size:1.1em;">E-mail</h3>
+            <p style="margin:0;"><a href="mailto:bdu.datastore@gmail.com">bdu.datastore@gmail.com</a></p>
+          </div>
+          <div class="contact-card" style="flex:1 1 0; min-width:220px; min-height:140px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div class="contact-icon" aria-label="Telegram">&#128241;</div>
+            <h3 style="margin:8px 0 4px 0; font-size:1.1em;">Telegram</h3>
+            <p style="margin:0;"><a href="https://t.me/asaadoff" target="_blank" rel="noopener noreferrer">Asadoff</a></p>
+          </div>
+        </div>
     </div>
 
     <div class="contact-note">

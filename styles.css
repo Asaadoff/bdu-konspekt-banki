@@ -405,7 +405,7 @@ body{
 }
 
 .faculty h3::before{
-  content:'ðŸŽ“';
+  content:'ÃƒÂ°Ã…Â¸Ã…Â½Ã¢â‚¬Å“';
   font-size:24px;
 }
 
@@ -740,7 +740,7 @@ main.container a[href^="mailto"]{
   cursor:pointer;
 }
 
-/* Hover AnimasiyasÄ± */
+/* Hover AnimasiyasÃƒâ€žÃ‚Â± */
 .hero-logo-img:hover{
   transform:scale(1.08) rotate(5deg);
   box-shadow:0 25px 50px rgba(37,99,235,0.35);
@@ -783,7 +783,7 @@ main.container a[href^="mailto"]{
   }
 }
 
-/* Hover-da ring dayansÄ±n */
+/* Hover-da ring dayansÃƒâ€žÃ‚Â±n */
 .hero-logo-wrapper:hover::before,
 .hero-logo-wrapper:hover::after{
   animation-play-state:paused;
@@ -890,10 +890,10 @@ main.container a[href^="mailto"]{
 }
 
 /* ========================================
-   ANIMASIYALAR - HÉ™r bÃ¶lmÉ™ Ã¼Ã§Ã¼n fÉ™rqli
+   ANIMASIYALAR - HÃƒâ€°Ã¢â€žÂ¢r bÃƒÆ’Ã‚Â¶lmÃƒâ€°Ã¢â€žÂ¢ ÃƒÆ’Ã‚Â¼ÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â¼n fÃƒâ€°Ã¢â€žÂ¢rqli
    ======================================== */
 
-/* 1. NAVÄ°GASÄ°YA - Underline slide effekti */
+/* 1. NAVÃƒâ€žÃ‚Â°GASÃƒâ€žÃ‚Â°YA - Underline slide effekti */
 .top-nav a:not(.active){
   position:relative;
   overflow:hidden;
@@ -916,8 +916,8 @@ main.container a[href^="mailto"]{
   width:70%;
 }
 
-/* 2. FEATURE KARTLARI - HÉ™r ikonun Ã¶zÃ¼nÉ™mÉ™xsus animasiyasÄ± */
-/* Axtar (1-ci kart) - Lupa böyümə effekti */
+/* 2. FEATURE KARTLARI - HÃƒâ€°Ã¢â€žÂ¢r ikonun ÃƒÆ’Ã‚Â¶zÃƒÆ’Ã‚Â¼nÃƒâ€°Ã¢â€žÂ¢mÃƒâ€°Ã¢â€žÂ¢xsus animasiyasÃƒâ€žÃ‚Â± */
+/* Axtar (1-ci kart) - Lupa bÃƒÂ¶yÃƒÂ¼mÃ‰â„¢ effekti */
 .three-column .col:nth-child(1) .icon{
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -927,10 +927,7 @@ main.container a[href^="mailto"]{
 }
 
 
-
-
-
-/* PaylaÅŸ (2-ci kart) - YuxarÄ± uÃ§uÅŸ effekti */
+/* PaylaÃƒâ€¦Ã…Â¸ (2-ci kart) - YuxarÃƒâ€žÃ‚Â± uÃƒÆ’Ã‚Â§uÃƒâ€¦Ã…Â¸ effekti */
 .three-column .col:nth-child(2) .icon{
   
   transition:all 0.3s ease;
@@ -947,7 +944,7 @@ main.container a[href^="mailto"]{
   100%{transform:translateY(-12px)}
 }
 
-/* Faydalan (3-cÃ¼ kart) - Kitab tilt effekti */
+/* Faydalan (3-cÃƒÆ’Ã‚Â¼ kart) - Kitab tilt effekti */
 .three-column .col:nth-child(3) .icon{
   
   transition:all 0.4s ease;
@@ -965,7 +962,7 @@ main.container a[href^="mailto"]{
   100%{transform:rotate(0)}
 }
 
-/* KartlarÄ±n hover keÃ§idi Ã¼Ã§Ã¼n gradient border */
+/* KartlarÃƒâ€žÃ‚Â±n hover keÃƒÆ’Ã‚Â§idi ÃƒÆ’Ã‚Â¼ÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â¼n gradient border */
 .three-column .col{
   position:relative;
 }
@@ -989,8 +986,8 @@ main.container a[href^="mailto"]{
   opacity:1;
 }
 
-/* 3. ÆLAQÆ SÆHÄ°FÆSÄ° - Contact reasons list */
-/* HÉ™r element Ã¼Ã§Ã¼n stagger entrance */
+/* 3. Ãƒâ€ Ã‚ÂLAQÃƒâ€ Ã‚Â SÃƒâ€ Ã‚ÂHÃƒâ€žÃ‚Â°FÃƒâ€ Ã‚ÂSÃƒâ€žÃ‚Â° - Contact reasons list */
+/* HÃƒâ€°Ã¢â€žÂ¢r element ÃƒÆ’Ã‚Â¼ÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â¼n stagger entrance */
 .contact-note li:nth-child(1){animation-delay:0s}
 .contact-note li:nth-child(2){animation-delay:0.1s}
 .contact-note li:nth-child(3){animation-delay:0.15s}
@@ -1158,11 +1155,7 @@ main.container a[href^="mailto"]{
 }
 
 
-
-
-
-
-/* Axtar ikonu - Shake animasiyası */
+/* Axtar ikonu - Shake animasiyasÃ„Â± */
 @keyframes searchShake {
   0% { transform: rotate(0deg); }
   20% { transform: rotate(-15deg) scale(1.1); }
@@ -1178,7 +1171,7 @@ main.container a[href^="mailto"]{
 }
 
 
-/* Hero düymələri - Soldan dolma animasiyası */
+/* Hero dÃƒÂ¼ymÃ‰â„¢lÃ‰â„¢ri - Soldan dolma animasiyasÃ„Â± */
 .hero-buttons .btn {
   position: relative;
   overflow: hidden;
@@ -1214,7 +1207,7 @@ main.container a[href^="mailto"]{
 }
 
 
-/* Konspektlərə bax düyməsi - Ağ rəng dolur */
+/* KonspektlÃ‰â„¢rÃ‰â„¢ bax dÃƒÂ¼ymÃ‰â„¢si - AÃ„Å¸ rÃ‰â„¢ng dolur */
 .hero-buttons .btn:not(.secondary)::before {
   left: 0; right: auto;
   background: rgba(255, 255, 255, 0.95);
@@ -1224,7 +1217,7 @@ main.container a[href^="mailto"]{
   color: var(--primary);
 }
 /* =============================================
-   MOBIL RESPONSIVE STILLƏR
+   MOBIL RESPONSIVE STILLÃ†ÂR
    ============================================= */
 
 /* Tablet (768px - 1024px) */
@@ -1251,7 +1244,7 @@ main.container a[href^="mailto"]{
   }
 }
 
-/* Mobil (768px və aşağı) */
+/* Mobil (768px vÃ‰â„¢ aÃ…Å¸aÃ„Å¸Ã„Â±) */
 @media (max-width: 768px) {
   /* Header */
   .brand h1 {
@@ -1305,7 +1298,7 @@ main.container a[href^="mailto"]{
     padding: 14px 24px;
   }
   
-  /* 3 Sütun kartlar */
+  /* 3 SÃƒÂ¼tun kartlar */
   .three-column {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -1342,13 +1335,13 @@ main.container a[href^="mailto"]{
     font-size: 13px;
   }
   
-  /* Səhifə başlıqları */
+  /* SÃ‰â„¢hifÃ‰â„¢ baÃ…Å¸lÃ„Â±qlarÃ„Â± */
   main.container > h2 {
     font-size: 26px;
     margin: 30px 0 20px;
   }
   
-  /* FAQ və Qaydalar */
+  /* FAQ vÃ‰â„¢ Qaydalar */
   .faq-item {
     padding: 16px 18px;
   }
@@ -1409,7 +1402,7 @@ main.container a[href^="mailto"]{
     font-size: 20px;
   }
   
-  /* 404 səhifə */
+  /* 404 sÃ‰â„¢hifÃ‰â„¢ */
   .error-icon {
     font-size: 60px;
   }
@@ -1423,7 +1416,7 @@ main.container a[href^="mailto"]{
   }
 }
 
-/* Kiçik mobil (480px və aşağı) */
+/* KiÃƒÂ§ik mobil (480px vÃ‰â„¢ aÃ…Å¸aÃ„Å¸Ã„Â±) */
 @media (max-width: 480px) {
   .container {
     padding: 0 16px;
@@ -1466,4 +1459,339 @@ main.container a[href^="mailto"]{
   .error-page h1 {
     font-size: 60px;
   }
+}
+
+/* =============================================
+   MOBÃ„Â°L ANÃ„Â°MASÃ„Â°YA OPTÃ„Â°MALLAÃ…Å¾DIRMALARI
+   ============================================= */
+
+@media (max-width: 768px) {
+  /* Kartlarda hover Ã‰â„¢vÃ‰â„¢zinÃ‰â„¢ touch-friendly animasiya */
+  .three-column .col {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .three-column .col:active {
+    transform: scale(0.98);
+  }
+  
+  /* Ã„Â°konlar ÃƒÂ¼ÃƒÂ§ÃƒÂ¼n sadÃ‰â„¢ animasiya */
+  .three-column .col:nth-child(1) .icon,
+  .three-column .col:nth-child(2) .icon,
+  .three-column .col:nth-child(3) .icon {
+    animation: none;
+    transition: transform 0.3s ease;
+  }
+  
+  .three-column .col:active .icon {
+    transform: scale(1.1);
+  }
+  
+  /* Hero logo - sadÃ‰â„¢ pulse */
+  .hero-logo-img {
+    animation: mobilePulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes mobilePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+  
+  /* DÃƒÂ¼ymÃ‰â„¢lÃ‰â„¢r - touch feedback */
+  .hero-buttons .btn {
+    transition: all 0.2s ease;
+  }
+  
+  .hero-buttons .btn:active {
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+  
+  /* Hover effektlÃ‰â„¢rini sÃƒÂ¶ndÃƒÂ¼r - mobil ÃƒÂ¼ÃƒÂ§ÃƒÂ¼n */
+  .hero-buttons .btn:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+  }
+  
+  .hero-buttons .btn:hover::before {
+    width: 0;
+  }
+  
+  /* FAQ/Qaydalar - touch feedback */
+  .faq-item:active {
+    transform: scale(0.99);
+    border-color: var(--primary);
+  }
+  
+  /* Contact card touch */
+  .contact-card:active {
+    transform: scale(0.98);
+  }
+  
+  /* Format list - sadÃ‰â„¢ tap effekti */
+  .format-list li:active {
+    background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+    transform: scale(0.98);
+  }
+  
+  /* Contact note items */
+  .contact-note li:active {
+    background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+  }
+  
+  /* Col button touch */
+  .col-btn:active {
+    background: var(--primary);
+    color: #fff;
+    transform: scale(0.97);
+  }
+  
+  /* Pulse ring-i mobilde gizlÃ‰â„¢t */
+  .hero-logo-wrapper::before,
+  .hero-logo-wrapper::after {
+    display: none;
+  }
+  
+  /* Gradient border hover-u mobilde sÃƒÂ¶ndÃƒÂ¼r */
+  .three-column .col::before {
+    display: none;
+  }
+  
+  /* Brand logo touch */
+  .brand-link:active .brand-logo {
+    transform: scale(0.95);
+  }
+}
+
+/* KiÃƒÂ§ik mobil ÃƒÂ¼ÃƒÂ§ÃƒÂ¼n Ã‰â„¢lavÃ‰â„¢ */
+@media (max-width: 480px) {
+  .hero-logo-img {
+    animation: none;
+  }
+  
+  /* Performans ÃƒÂ¼ÃƒÂ§ÃƒÂ¼n animasiyalarÃ„Â± minimuma endir */
+  * {
+    animation-duration: 0.3s !important;
+  }
+}
+
+/* ==================== */
+
+/* Toggle button icon style */
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+    transform: rotate(20deg);
+}
+
+/* Dark mode - Butun bashliqlar */
+    color: #ffffff;
+}
+
+/* Dark mode - Butun paragraflar */
+    color: #d0d0d0;
+}
+
+/* Dark mode - Butun linkler */
+    color: #82b1ff;
+}
+
+    color: #64b5f6;
+}
+
+/* Dark mode - Ana duymelar */
+    background: linear-gradient(135deg, #7c4dff 0%, #536dfe 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(124, 77, 255, 0.4);
+}
+
+    background: linear-gradient(135deg, #651fff 0%, #304ffe 100%);
+    box-shadow: 0 6px 20px rgba(124, 77, 255, 0.6);
+}
+
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark mode - Hero section */
+    filter: brightness(1.2);
+}
+
+    color: #fff;
+}
+
+    color: #c0c0c0;
+}
+
+/* Dark mode - Feature cards icon */
+    background: rgba(130, 177, 255, 0.15);
+}
+
+/* Dark mode - Section backgrounds */
+    background: transparent;
+}
+
+    background: linear-gradient(180deg, rgba(26, 26, 46, 0.5) 0%, rgba(22, 33, 62, 0.5) 100%);
+}
+
+/* Dark mode - Input ve form elementleri */
+    background: rgba(40, 40, 70, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+    color: #888;
+}
+
+    border-color: #82b1ff;
+    box-shadow: 0 0 0 3px rgba(130, 177, 255, 0.2);
+}
+
+/* Dark mode - Lists */
+    color: #d0d0d0;
+}
+
+/* Dark mode - Blockquote */
+    background: rgba(40, 40, 70, 0.6);
+    border-left-color: #82b1ff;
+    color: #c0c0c0;
+}
+
+/* Dark mode - Code blocks */
+    background: rgba(20, 20, 40, 0.8);
+    color: #82b1ff;
+}
+
+/* Dark mode - HR */
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode - Contact page */
+    background: rgba(30, 30, 60, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+    color: #fff;
+}
+
+    color: #b8b8b8;
+}
+
+    color: #82b1ff;
+}
+
+/* Dark mode - FAQ page */
+    background: rgba(26, 26, 46, 0.8);
+}
+
+    background: rgba(35, 35, 65, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+    background: rgba(45, 45, 80, 0.9);
+    border-color: rgba(130, 177, 255, 0.3);
+}
+
+    color: #ffffff;
+    font-weight: 600;
+}
+
+    color: #c8c8c8;
+    line-height: 1.7;
+}
+
+/* Dark mode - Qaydalar page */
+    background: rgba(26, 26, 46, 0.8);
+}
+
+    background: rgba(35, 35, 65, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+    color: #82b1ff;
+}
+
+    color: #c8c8c8;
+}
+
+/* Dark mode - Konspektler page */
+    background: rgba(35, 35, 65, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+    background: rgba(45, 45, 80, 0.95);
+    border-color: rgba(130, 177, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+    color: #fff;
+}
+
+    color: #b8b8b8;
+}
+
+    color: #82b1ff;
+}
+
+/* Dark mode - 404 page */
+    color: #82b1ff;
+}
+
+    color: #c8c8c8;
+}
+
+/* Dark mode - Loading screen */
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* Dark mode - Mobile menu */
+    background: rgba(20, 20, 45, 0.98);
+}
+
+    color: #e0e0e0;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+    background: rgba(130, 177, 255, 0.1);
+    color: #82b1ff;
+}
+
+/* Dark mode - Hamburger menu */
+    background: #e0e0e0;
+}
+
+/* Dark mode - Selection */
+    background: rgba(130, 177, 255, 0.3);
+    color: #fff;
+}
+
+/* Dark mode - Box shadows daha soft */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode - Smooth transition */
+body {
+    transition: background 0.4s ease, color 0.3s ease;
+}
+
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark mode icin page-content */
+    background: transparent;
+    color: #e0e0e0;
+}
+
+/* Dark mode info-box ve alert-lar */
+    background: rgba(130, 177, 255, 0.1);
+    border: 1px solid rgba(130, 177, 255, 0.3);
+    color: #c8c8c8;
+}
+
+/* Dark mode - Strong ve bold text */
+    color: #fff;
+}
+
+/* Dark mode - Em ve italic */
+    color: #c8c8c8;
 }
