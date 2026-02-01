@@ -106,6 +106,9 @@
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+  <!-- Firebase Analytics & Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
   <script>
     // Firebase konfiqurasiyası
     const firebaseConfig = {
@@ -117,6 +120,56 @@
       appId: "1:703396316198:web:652ac7929bdfad111092e7"
     };
     firebase.initializeApp(firebaseConfig);
+
+      // Analytics ve Firestore
+      const analytics = firebase.analytics();
+      const db = firebase.firestore();
+
+      // Sehife baxisini izle
+      analytics.logEvent('page_view', {
+        page_title: document.title,
+        page_location: window.location.href,
+        page_path: window.location.pathname
+      });
+
+      // Istifadeci fealiyyetlerini Firestore-a yaz
+      function logActivity(action, details = {}) {
+        const user = auth.currentUser;
+        if (user) {
+          db.collection('user_activities').add({
+            userId: user.uid,
+            userEmail: user.email,
+            action: action,
+            details: details,
+            page: window.location.pathname,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            userAgent: navigator.userAgent
+          });
+        }
+      }
+
+      // Login olan istifadecini izle
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          logActivity('page_visit', { page: document.title });
+        }
+      });
+
+      // Butun klikleri izle
+      document.addEventListener('click', (e) => {
+        const target = e.target.closest('a, button');
+        if (target) {
+          analytics.logEvent('click', {
+            element: target.tagName,
+            text: target.textContent?.substring(0, 50),
+            href: target.href || ''
+          });
+          logActivity('click', {
+            element: target.tagName,
+            text: target.textContent?.substring(0, 50)
+          });
+        }
+      });
     const auth = firebase.auth();
 
       // Auth yoxlamasi - login olmayanlari login sehifesine yonlendir

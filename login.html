@@ -521,6 +521,9 @@
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+  <!-- Firebase Analytics & Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
   
   <script>
     // Firebase konfiqurasiyası
@@ -537,6 +540,29 @@
     // Firebase başlat
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
+
+      // Analytics
+      const analytics = firebase.analytics();
+      const db = firebase.firestore();
+
+      // Sehife baxisini izle
+      analytics.logEvent('page_view', {
+        page_title: document.title,
+        page_location: window.location.href
+      });
+
+      // Login/Register cehdi izle
+      function logAuthAttempt(action, success, email = '') {
+        db.collection('auth_logs').add({
+          action: action,
+          success: success,
+          email: email,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          userAgent: navigator.userAgent,
+          ip: ''
+        });
+        analytics.logEvent(action, { success: success });
+      }
 
     // DOM elementləri
     const loginForm = document.getElementById('login-form');
