@@ -116,6 +116,13 @@
     };
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
+
+      // Auth yoxlamasi - login olmayanlari login sehifesine yonlendir
+      auth.onAuthStateChanged((user) => {
+        if (!user) {
+          window.location.href = 'login.html';
+        }
+      });
     
     // Logout button
     const logoutBtn = document.getElementById('logout-btn');
