@@ -37,6 +37,7 @@
         <a href="qaydalar.html" class="active">Qaydalar</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Əlaqə</a>
+        <a href="#" class="logout-btn" id="logout-btn">Hesabdan çıx</a>
       </nav>
     </div>
   </header>
@@ -90,7 +91,7 @@
 
     <div class="faq-item">
       <p class="q">8. Şikayət və təkliflər</p>
-      <p class="a">Hər hansı problem və ya təklifiniz varsa, Əlaqə səhifəsindən bizə yaza bilərsiniz.</p>
+      <p class="a">Hər hansı problem və ya təklifiniz varsa, əlaqə səhifəsindən bizə yaza bilərsiniz.</p>
     </div>
   </main>
 
@@ -102,5 +103,35 @@
   </footer>
 
   <script src="script.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+  <script>
+    // Firebase konfiqurasiyası
+    const firebaseConfig = {
+      apiKey: "AIzaSyDz8qsMY7R56wY9tuCiBjvPTF2gw8UJ6RI",
+      authDomain: "bdudatastore.firebaseapp.com",
+      projectId: "bdudatastore",
+      storageBucket: "bdudatastore.firebasestorage.app",
+      messagingSenderId: "703396316198",
+      appId: "1:703396316198:web:652ac7929bdfad111092e7"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    
+    // Logout button
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+          await auth.signOut();
+          window.location.href = 'login.html';
+        } catch (error) {
+          console.error('Logout error:', error);
+        }
+      });
+    }
+  </script>
 </body>
 </html>

@@ -93,46 +93,69 @@ body{
 }
 
 /* Navigation */
-.top-nav{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
+  .top-nav{
+    display:flex;
+    align-items:center;
+    gap:5px;
+  }
 
-.top-nav a{
-  text-decoration:none;
-  color:var(--text);
-  padding:8px 16px;
-  border-radius:8px;
-  font-weight:500;
-  font-size:14px;
-  transition:var(--transition);
-}
+  .top-nav a{
+    text-decoration:none;
+    color:var(--text);
+    padding:8px 12px;
+    border-radius:10px;
+    font-weight:500;
+    font-size:13px;
+    position:relative;
+    overflow:hidden;
+    transition:all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    background:transparent;
+    z-index:1;
+    white-space:nowrap;
+  }
 
-.top-nav a:hover{
-  background:var(--bg-alt);
-  color:var(--primary);
-}
+  .top-nav a::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius:10px;
+    transform:scaleX(0);
+    transform-origin:right;
+    transition:transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index:-1;
+  }
 
-.top-nav a.active{
-  background:linear-gradient(135deg, var(--primary), var(--primary-light));
-  color:#fff;
-}
+  .top-nav a:hover{
+    color:#fff;
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(102, 126, 234, 0.4);
+  }
 
-/* Mobile Menu Toggle */
-.menu-toggle{
-  display:none;
-  flex-direction:column;
-  gap:5px;
-  background:none;
-  border:none;
-  cursor:pointer;
+  .top-nav a:hover::before{
+    transform:scaleX(1);
+    transform-origin:left;
+  }
+
+  .top-nav a.active{
+    background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color:#fff;
+    box-shadow:0 4px 15px rgba(102, 126, 234, 0.4);
+  }
+
+  .top-nav a.active::before{
+    display:none;
   padding:8px;
   border-radius:8px;
   transition:var(--transition);
 }
 
-.menu-toggle:hover{background:var(--bg-alt)}
+.menu-toggle{display:none;flex-direction:column;gap:5px;padding:8px;border-radius:8px;background:transparent;border:none;cursor:pointer}
+
+  .menu-toggle:hover{background:var(--bg-alt)}
 
 .menu-toggle span{
   display:block;
@@ -405,7 +428,7 @@ body{
 }
 
 .faculty h3::before{
-  content:'ÃƒÂ°Ã…Â¸Ã…Â½Ã¢â‚¬Å“';
+  content:'ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸Ãƒâ€¦Ã‚Â½ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ';
   font-size:24px;
 }
 
@@ -740,7 +763,7 @@ main.container a[href^="mailto"]{
   cursor:pointer;
 }
 
-/* Hover AnimasiyasÃƒâ€žÃ‚Â± */
+/* Hover AnimasiyasÃƒÆ’Ã¢â‚¬Å¾Ãƒâ€šÃ‚Â± */
 .hero-logo-img:hover{
   transform:scale(1.08) rotate(5deg);
   box-shadow:0 25px 50px rgba(37,99,235,0.35);
@@ -783,7 +806,7 @@ main.container a[href^="mailto"]{
   }
 }
 
-/* Hover-da ring dayansÃƒâ€žÃ‚Â±n */
+/* Hover-da ring dayansÃƒÆ’Ã¢â‚¬Å¾Ãƒâ€šÃ‚Â±n */
 .hero-logo-wrapper:hover::before,
 .hero-logo-wrapper:hover::after{
   animation-play-state:paused;
@@ -890,34 +913,13 @@ main.container a[href^="mailto"]{
 }
 
 /* ========================================
-   ANIMASIYALAR - HÃƒâ€°Ã¢â€žÂ¢r bÃƒÆ’Ã‚Â¶lmÃƒâ€°Ã¢â€žÂ¢ ÃƒÆ’Ã‚Â¼ÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â¼n fÃƒâ€°Ã¢â€žÂ¢rqli
+   ANIMASIYALAR - HÃƒÆ’Ã¢â‚¬Â°ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢r bÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¶lmÃƒÆ’Ã¢â‚¬Â°ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¼ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¼n fÃƒÆ’Ã¢â‚¬Â°ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢rqli
    ======================================== */
 
-/* 1. NAVÃƒâ€žÃ‚Â°GASÃƒâ€žÃ‚Â°YA - Underline slide effekti */
-.top-nav a:not(.active){
-  position:relative;
-  overflow:hidden;
-}
 
-.top-nav a:not(.active)::after{
-  content:'';
-  position:absolute;
-  bottom:4px;
-  left:50%;
-  width:0;
-  height:2px;
-  background:linear-gradient(90deg, var(--primary), var(--accent));
-  transition:all 0.3s ease;
-  transform:translateX(-50%);
-  border-radius:2px;
-}
 
-.top-nav a:not(.active):hover::after{
-  width:70%;
-}
-
-/* 2. FEATURE KARTLARI - HÃƒâ€°Ã¢â€žÂ¢r ikonun ÃƒÆ’Ã‚Â¶zÃƒÆ’Ã‚Â¼nÃƒâ€°Ã¢â€žÂ¢mÃƒâ€°Ã¢â€žÂ¢xsus animasiyasÃƒâ€žÃ‚Â± */
-/* Axtar (1-ci kart) - Lupa bÃƒÂ¶yÃƒÂ¼mÃ‰â„¢ effekti */
+/* 2. FEATURE KARTLARI - HÃƒÆ’Ã¢â‚¬Â°ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢r ikonun ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¶zÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¼nÃƒÆ’Ã¢â‚¬Â°ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢mÃƒÆ’Ã¢â‚¬Â°ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢xsus animasiyasÃƒÆ’Ã¢â‚¬Å¾Ãƒâ€šÃ‚Â± */
+/* Axtar (1-ci kart) - Lupa bÃƒÆ’Ã‚Â¶yÃƒÆ’Ã‚Â¼mÃƒâ€°Ã¢â€žÂ¢ effekti */
 .three-column .col:nth-child(1) .icon{
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -927,7 +929,7 @@ main.container a[href^="mailto"]{
 }
 
 
-/* PaylaÃƒâ€¦Ã…Â¸ (2-ci kart) - YuxarÃƒâ€žÃ‚Â± uÃƒÆ’Ã‚Â§uÃƒâ€¦Ã…Â¸ effekti */
+/* PaylaÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€¦Ã‚Â¸ (2-ci kart) - YuxarÃƒÆ’Ã¢â‚¬Å¾Ãƒâ€šÃ‚Â± uÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§uÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€¦Ã‚Â¸ effekti */
 .three-column .col:nth-child(2) .icon{
   
   transition:all 0.3s ease;
@@ -944,7 +946,7 @@ main.container a[href^="mailto"]{
   100%{transform:translateY(-12px)}
 }
 
-/* Faydalan (3-cÃƒÆ’Ã‚Â¼ kart) - Kitab tilt effekti */
+/* Faydalan (3-cÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¼ kart) - Kitab tilt effekti */
 .three-column .col:nth-child(3) .icon{
   
   transition:all 0.4s ease;
@@ -962,7 +964,7 @@ main.container a[href^="mailto"]{
   100%{transform:rotate(0)}
 }
 
-/* KartlarÃƒâ€žÃ‚Â±n hover keÃƒÆ’Ã‚Â§idi ÃƒÆ’Ã‚Â¼ÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â¼n gradient border */
+/* KartlarÃƒÆ’Ã¢â‚¬Å¾Ãƒâ€šÃ‚Â±n hover keÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§idi ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¼ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¼n gradient border */
 .three-column .col{
   position:relative;
 }
@@ -986,8 +988,8 @@ main.container a[href^="mailto"]{
   opacity:1;
 }
 
-/* 3. Ãƒâ€ Ã‚ÂLAQÃƒâ€ Ã‚Â SÃƒâ€ Ã‚ÂHÃƒâ€žÃ‚Â°FÃƒâ€ Ã‚ÂSÃƒâ€žÃ‚Â° - Contact reasons list */
-/* HÃƒâ€°Ã¢â€žÂ¢r element ÃƒÆ’Ã‚Â¼ÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â¼n stagger entrance */
+/* 3. ÃƒÆ’Ã¢â‚¬Â Ãƒâ€šÃ‚ÂLAQÃƒÆ’Ã¢â‚¬Â Ãƒâ€šÃ‚Â SÃƒÆ’Ã¢â‚¬Â Ãƒâ€šÃ‚ÂHÃƒÆ’Ã¢â‚¬Å¾Ãƒâ€šÃ‚Â°FÃƒÆ’Ã¢â‚¬Â Ãƒâ€šÃ‚ÂSÃƒÆ’Ã¢â‚¬Å¾Ãƒâ€šÃ‚Â° - Contact reasons list */
+/* HÃƒÆ’Ã¢â‚¬Â°ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢r element ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¼ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¼n stagger entrance */
 .contact-note li:nth-child(1){animation-delay:0s}
 .contact-note li:nth-child(2){animation-delay:0.1s}
 .contact-note li:nth-child(3){animation-delay:0.15s}
@@ -1155,7 +1157,7 @@ main.container a[href^="mailto"]{
 }
 
 
-/* Axtar ikonu - Shake animasiyasÃ„Â± */
+/* Axtar ikonu - Shake animasiyasÃƒâ€žÃ‚Â± */
 @keyframes searchShake {
   0% { transform: rotate(0deg); }
   20% { transform: rotate(-15deg) scale(1.1); }
@@ -1171,7 +1173,7 @@ main.container a[href^="mailto"]{
 }
 
 
-/* Hero dÃƒÂ¼ymÃ‰â„¢lÃ‰â„¢ri - Soldan dolma animasiyasÃ„Â± */
+/* Hero dÃƒÆ’Ã‚Â¼ymÃƒâ€°Ã¢â€žÂ¢lÃƒâ€°Ã¢â€žÂ¢ri - Soldan dolma animasiyasÃƒâ€žÃ‚Â± */
 .hero-buttons .btn {
   position: relative;
   overflow: hidden;
@@ -1207,7 +1209,7 @@ main.container a[href^="mailto"]{
 }
 
 
-/* KonspektlÃ‰â„¢rÃ‰â„¢ bax dÃƒÂ¼ymÃ‰â„¢si - AÃ„Å¸ rÃ‰â„¢ng dolur */
+/* KonspektlÃƒâ€°Ã¢â€žÂ¢rÃƒâ€°Ã¢â€žÂ¢ bax dÃƒÆ’Ã‚Â¼ymÃƒâ€°Ã¢â€žÂ¢si - AÃƒâ€žÃ…Â¸ rÃƒâ€°Ã¢â€žÂ¢ng dolur */
 .hero-buttons .btn:not(.secondary)::before {
   left: 0; right: auto;
   background: rgba(255, 255, 255, 0.95);
@@ -1217,7 +1219,7 @@ main.container a[href^="mailto"]{
   color: var(--primary);
 }
 /* =============================================
-   MOBIL RESPONSIVE STILLÃ†ÂR
+   MOBIL RESPONSIVE STILLÃƒâ€ Ã‚ÂR
    ============================================= */
 
 /* Tablet (768px - 1024px) */
@@ -1244,7 +1246,7 @@ main.container a[href^="mailto"]{
   }
 }
 
-/* Mobil (768px vÃ‰â„¢ aÃ…Å¸aÃ„Å¸Ã„Â±) */
+/* Mobil (768px vÃƒâ€°Ã¢â€žÂ¢ aÃƒâ€¦Ã…Â¸aÃƒâ€žÃ…Â¸Ãƒâ€žÃ‚Â±) */
 @media (max-width: 768px) {
   /* Header */
   .brand h1 {
@@ -1298,7 +1300,7 @@ main.container a[href^="mailto"]{
     padding: 14px 24px;
   }
   
-  /* 3 SÃƒÂ¼tun kartlar */
+  /* 3 SÃƒÆ’Ã‚Â¼tun kartlar */
   .three-column {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -1335,13 +1337,13 @@ main.container a[href^="mailto"]{
     font-size: 13px;
   }
   
-  /* SÃ‰â„¢hifÃ‰â„¢ baÃ…Å¸lÃ„Â±qlarÃ„Â± */
+  /* SÃƒâ€°Ã¢â€žÂ¢hifÃƒâ€°Ã¢â€žÂ¢ baÃƒâ€¦Ã…Â¸lÃƒâ€žÃ‚Â±qlarÃƒâ€žÃ‚Â± */
   main.container > h2 {
     font-size: 26px;
     margin: 30px 0 20px;
   }
   
-  /* FAQ vÃ‰â„¢ Qaydalar */
+  /* FAQ vÃƒâ€°Ã¢â€žÂ¢ Qaydalar */
   .faq-item {
     padding: 16px 18px;
   }
@@ -1402,7 +1404,7 @@ main.container a[href^="mailto"]{
     font-size: 20px;
   }
   
-  /* 404 sÃ‰â„¢hifÃ‰â„¢ */
+  /* 404 sÃƒâ€°Ã¢â€žÂ¢hifÃƒâ€°Ã¢â€žÂ¢ */
   .error-icon {
     font-size: 60px;
   }
@@ -1416,7 +1418,7 @@ main.container a[href^="mailto"]{
   }
 }
 
-/* KiÃƒÂ§ik mobil (480px vÃ‰â„¢ aÃ…Å¸aÃ„Å¸Ã„Â±) */
+/* KiÃƒÆ’Ã‚Â§ik mobil (480px vÃƒâ€°Ã¢â€žÂ¢ aÃƒâ€¦Ã…Â¸aÃƒâ€žÃ…Â¸Ãƒâ€žÃ‚Â±) */
 @media (max-width: 480px) {
   .container {
     padding: 0 16px;
@@ -1462,11 +1464,11 @@ main.container a[href^="mailto"]{
 }
 
 /* =============================================
-   MOBÃ„Â°L ANÃ„Â°MASÃ„Â°YA OPTÃ„Â°MALLAÃ…Å¾DIRMALARI
+   MOBÃƒâ€žÃ‚Â°L ANÃƒâ€žÃ‚Â°MASÃƒâ€žÃ‚Â°YA OPTÃƒâ€žÃ‚Â°MALLAÃƒâ€¦Ã…Â¾DIRMALARI
    ============================================= */
 
 @media (max-width: 768px) {
-  /* Kartlarda hover Ã‰â„¢vÃ‰â„¢zinÃ‰â„¢ touch-friendly animasiya */
+  /* Kartlarda hover Ãƒâ€°Ã¢â€žÂ¢vÃƒâ€°Ã¢â€žÂ¢zinÃƒâ€°Ã¢â€žÂ¢ touch-friendly animasiya */
   .three-column .col {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
@@ -1475,7 +1477,7 @@ main.container a[href^="mailto"]{
     transform: scale(0.98);
   }
   
-  /* Ã„Â°konlar ÃƒÂ¼ÃƒÂ§ÃƒÂ¼n sadÃ‰â„¢ animasiya */
+  /* Ãƒâ€žÃ‚Â°konlar ÃƒÆ’Ã‚Â¼ÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â¼n sadÃƒâ€°Ã¢â€žÂ¢ animasiya */
   .three-column .col:nth-child(1) .icon,
   .three-column .col:nth-child(2) .icon,
   .three-column .col:nth-child(3) .icon {
@@ -1487,7 +1489,7 @@ main.container a[href^="mailto"]{
     transform: scale(1.1);
   }
   
-  /* Hero logo - sadÃ‰â„¢ pulse */
+  /* Hero logo - sadÃƒâ€°Ã¢â€žÂ¢ pulse */
   .hero-logo-img {
     animation: mobilePulse 2s ease-in-out infinite;
   }
@@ -1497,7 +1499,7 @@ main.container a[href^="mailto"]{
     50% { transform: scale(1.03); }
   }
   
-  /* DÃƒÂ¼ymÃ‰â„¢lÃ‰â„¢r - touch feedback */
+  /* DÃƒÆ’Ã‚Â¼ymÃƒâ€°Ã¢â€žÂ¢lÃƒâ€°Ã¢â€žÂ¢r - touch feedback */
   .hero-buttons .btn {
     transition: all 0.2s ease;
   }
@@ -1507,7 +1509,7 @@ main.container a[href^="mailto"]{
     opacity: 0.9;
   }
   
-  /* Hover effektlÃ‰â„¢rini sÃƒÂ¶ndÃƒÂ¼r - mobil ÃƒÂ¼ÃƒÂ§ÃƒÂ¼n */
+  /* Hover effektlÃƒâ€°Ã¢â€žÂ¢rini sÃƒÆ’Ã‚Â¶ndÃƒÆ’Ã‚Â¼r - mobil ÃƒÆ’Ã‚Â¼ÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â¼n */
   .hero-buttons .btn:hover {
     transform: none;
     box-shadow: var(--shadow);
@@ -1528,7 +1530,7 @@ main.container a[href^="mailto"]{
     transform: scale(0.98);
   }
   
-  /* Format list - sadÃ‰â„¢ tap effekti */
+  /* Format list - sadÃƒâ€°Ã¢â€žÂ¢ tap effekti */
   .format-list li:active {
     background: linear-gradient(135deg, #eff6ff, #e0f2fe);
     transform: scale(0.98);
@@ -1546,13 +1548,13 @@ main.container a[href^="mailto"]{
     transform: scale(0.97);
   }
   
-  /* Pulse ring-i mobilde gizlÃ‰â„¢t */
+  /* Pulse ring-i mobilde gizlÃƒâ€°Ã¢â€žÂ¢t */
   .hero-logo-wrapper::before,
   .hero-logo-wrapper::after {
     display: none;
   }
   
-  /* Gradient border hover-u mobilde sÃƒÂ¶ndÃƒÂ¼r */
+  /* Gradient border hover-u mobilde sÃƒÆ’Ã‚Â¶ndÃƒÆ’Ã‚Â¼r */
   .three-column .col::before {
     display: none;
   }
@@ -1563,13 +1565,13 @@ main.container a[href^="mailto"]{
   }
 }
 
-/* KiÃƒÂ§ik mobil ÃƒÂ¼ÃƒÂ§ÃƒÂ¼n Ã‰â„¢lavÃ‰â„¢ */
+/* KiÃƒÆ’Ã‚Â§ik mobil ÃƒÆ’Ã‚Â¼ÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â¼n Ãƒâ€°Ã¢â€žÂ¢lavÃƒâ€°Ã¢â€žÂ¢ */
 @media (max-width: 480px) {
   .hero-logo-img {
     animation: none;
   }
   
-  /* Performans ÃƒÂ¼ÃƒÂ§ÃƒÂ¼n animasiyalarÃ„Â± minimuma endir */
+  /* Performans ÃƒÆ’Ã‚Â¼ÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â¼n animasiyalarÃƒâ€žÃ‚Â± minimuma endir */
   * {
     animation-duration: 0.3s !important;
   }
@@ -1795,3 +1797,47 @@ body {
 /* Dark mode - Em ve italic */
     color: #c8c8c8;
 }
+
+/* ==================== */
+/* LOGIN BUTTON STYLE */
+/* ==================== */
+
+.logout-btn {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%) !important;
+    color: #fff !important;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 4px 15px rgba(238, 90, 90, 0.3);
+    margin-left: 10px;
+}
+
+.logout-btn::before {
+    background: linear-gradient(135deg, #ff5252 0%, #d32f2f 100%) !important;
+}
+
+.logout-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(238, 90, 90, 0.5);
+    color: #fff !important;
+}
+
+@media (max-width: 768px) {
+    .logout-btn {
+        display: block;
+        text-align: center;
+        margin: 15px 20px;
+        padding: 14px 24px;
+    }
+}
+
+/* ==================== */
+/* NAV LINKS ANIMATION */
+/* ==================== */
+
+
+
+  
+
