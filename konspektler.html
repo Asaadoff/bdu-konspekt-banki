@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#667eea">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body style="display:none;">
   <div class="loader-wrapper" id="loader">
     <div class="loader"></div>
   </div>
@@ -78,6 +78,7 @@
       appId: "1:703396316198:web:652ac7929bdfad111092e7"
     };
     firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
 
       // Analytics ve Firestore
       const analytics = firebase.analytics();
@@ -128,12 +129,13 @@
           });
         }
       });
-    const auth = firebase.auth();
 
       // Auth yoxlamasi - login olmayanlari login sehifesine yonlendir
       auth.onAuthStateChanged((user) => {
         if (!user) {
           window.location.href = 'login.html';
+        } else {
+          document.body.style.display = 'block';
         }
       });
     
