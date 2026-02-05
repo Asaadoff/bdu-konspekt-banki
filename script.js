@@ -246,7 +246,7 @@ function showMaintenancePage() {
 }
 
 // Firebase-dən maintenance statusunu yoxla
-(async function() {
+async function checkMaintenance() {
   const urlParams = new URLSearchParams(window.location.search);
   const adminKey = urlParams.get('admin');
   
@@ -254,17 +254,6 @@ function showMaintenancePage() {
   if (adminKey === 'bdugizli123') return;
   
   try {
-    // Firebase SDK-ları yoxla, yoxdursa yüklə
-    if (typeof firebase === 'undefined') {
-      await loadScript('https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js');
-    }
-    if (typeof firebase !== 'undefined' && typeof firebase.firestore === 'undefined') {
-      await loadScript('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js');
-    }
-    
-    // Firebase yüklənənə qədər gözlə
-    await new Promise(resolve => setTimeout(resolve, 100));
-    
     // Firebase artıq başlatılmayıbsa, başlat
     if (!firebase.apps.length) {
       firebase.initializeApp(FIREBASE_CONFIG);
@@ -278,24 +267,11 @@ function showMaintenancePage() {
     }
   } catch (error) {
     console.log('Maintenance check error:', error);
-    // Xəta olsa da saytı göstər
   }
-})();
-
-function loadScript(src) {
-  return new Promise((resolve, reject) => {
-    // Script artıq yüklənibsə
-    if (document.querySelector(`script[src="${src}"]`)) {
-      resolve();
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = resolve;
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
 }
+
+// Script yüklənəndə dərhal yoxla
+checkMaintenance();
 
 document.addEventListener('DOMContentLoaded', function(){
   // Hide loader when page is ready
