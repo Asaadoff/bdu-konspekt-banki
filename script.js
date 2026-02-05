@@ -200,6 +200,7 @@ function showMaintenancePage() {
             .maintenance-text { font-size: 1rem; }
             .floating-circle { animation-duration: 15s !important; }
             .tool-icon { animation-duration: 6s !important; }
+            .logo-container img { animation-duration: 8s !important; }
             .info-card .card-value { font-size: 0.9rem; word-break: break-all; }
           }
         </style>
