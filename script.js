@@ -201,6 +201,7 @@ function showMaintenancePage() {
             .floating-circle { animation-duration: 15s !important; }
             .tool-icon { animation-duration: 6s !important; }
             .logo-container img { animation-duration: 8s !important; }
+            .left-panel { animation-duration: 30s !important; }
             .info-card .card-value { font-size: 0.9rem; word-break: break-all; }
           }
         </style>
