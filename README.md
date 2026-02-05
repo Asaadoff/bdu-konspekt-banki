@@ -1,1 +1,1 @@
-# bdu-konspekt-banki
+  # BDU Konspekt Bankı
