@@ -254,9 +254,16 @@ function showMaintenancePage() {
   if (adminKey === 'bdugizli123') return;
   
   try {
-    // Firebase SDK-ları dinamik yüklə
-    await loadScript('https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js');
-    await loadScript('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js');
+    // Firebase SDK-ları yoxla, yoxdursa yüklə
+    if (typeof firebase === 'undefined') {
+      await loadScript('https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js');
+    }
+    if (typeof firebase !== 'undefined' && typeof firebase.firestore === 'undefined') {
+      await loadScript('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js');
+    }
+    
+    // Firebase yüklənənə qədər gözlə
+    await new Promise(resolve => setTimeout(resolve, 100));
     
     // Firebase artıq başlatılmayıbsa, başlat
     if (!firebase.apps.length) {
