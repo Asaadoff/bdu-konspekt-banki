@@ -198,6 +198,9 @@ function showMaintenancePage() {
             .logo-text { font-size: 1.4rem; }
             .maintenance-title { font-size: 1.8rem; }
             .maintenance-text { font-size: 1rem; }
+            .floating-circle { animation-duration: 15s !important; }
+            .tool-icon { animation-duration: 6s !important; }
+            .info-card .card-value { font-size: 0.9rem; word-break: break-all; }
           }
         </style>
         <div class="maintenance-page">
@@ -229,11 +232,11 @@ function showMaintenancePage() {
                     <div class="card-value">Tezliklə</div>
                   </div>
                 </div>
-                <div class="info-card">
+                <div class="info-card" onclick="window.location.href='mailto:bdu.datastore@gmail.com'" style="cursor:pointer;">
                   <div class="card-icon">📧</div>
                   <div class="card-text">
                     <div class="card-label">Əlaqə</div>
-                    <div class="card-value">bdu.datastore@gmail.com</div>
+                    <div class="card-value">bdu.datastore<wbr>@gmail.com</div>
                   </div>
                 </div>
               </div>
