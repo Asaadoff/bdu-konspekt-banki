@@ -46,11 +46,13 @@
       <nav class="top-nav" id="top-nav">
         <a href="index.html" class="active">Ana səhifə</a>
         <a href="konspektler.html">Konspektlər</a>
-        <a href="upload.html" target="_blank">Konspekt yüklə</a>
+        <a href="upload.html">Konspekt yüklə</a>
+        <a href="leaderboard.html">Liderlər</a>
         <a href="qaydalar.html">Qaydalar</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Əlaqə</a>
-        <a href="#" class="logout-btn" id="logout-btn">Hesabdan çıx</a>
+        <a href="profile.html" class="profile-icon" id="nav-profile-icon" title="Profilim">👤</a>
+        <a href="#" class="logout-btn" id="logout-btn">Çıxış</a>
       </nav>
     </div>
   </header>
@@ -190,10 +192,44 @@
       auth.onAuthStateChanged((user) => {
         if (!user) {
           window.location.href = 'login.html';
+        } else if (!user.emailVerified && !user.providerData.some(p => p.providerId === 'google.com')) {
+          // E-poçt təsdiqlənməyib (Google istifadəçiləri istisna)
+          document.body.style.display = 'block';
+          showEmailVerificationBanner(user);
         } else {
           document.body.style.display = 'block';
         }
       });
+
+    // E-poçt təsdiqləmə banneri göstər
+    function showEmailVerificationBanner(user) {
+      // Banner artıq varsa, əlavə etmə
+      if (document.getElementById('email-verification-banner')) return;
+      
+      const banner = document.createElement('div');
+      banner.id = 'email-verification-banner';
+      banner.style.cssText = 'position:fixed;top:70px;left:0;right:0;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:15px 20px;text-align:center;z-index:999;font-size:14px;display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;';
+      banner.innerHTML = `
+        <span>⚠️ E-poçt ünvanınız təsdiqlənməyib. Bəzi funksiyalar məhdudlaşdırılıb.</span>
+        <button onclick="resendVerificationEmail()" style="background:#fff;color:#d97706;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;">Təsdiq e-poçtu göndər</button>
+        <button onclick="this.parentElement.remove()" style="background:transparent;color:#fff;border:1px solid #fff;padding:8px 16px;border-radius:8px;cursor:pointer;">Bağla</button>
+      `;
+      document.body.insertBefore(banner, document.body.firstChild);
+    }
+
+    // Təsdiq e-poçtunu yenidən göndər
+    async function resendVerificationEmail() {
+      try {
+        await auth.currentUser.sendEmailVerification();
+        alert('Təsdiq e-poçtu göndərildi! E-poçtunuzu yoxlayın.');
+      } catch (error) {
+        if (error.code === 'auth/too-many-requests') {
+          alert('Çox sayda cəhd. Bir az gözləyin və yenidən cəhd edin.');
+        } else {
+          alert('Xəta baş verdi. Yenidən cəhd edin.');
+        }
+      }
+    }
     
     // Logout button
     const logoutBtn = document.getElementById('logout-btn');
@@ -202,11 +238,26 @@
         e.preventDefault();
         try {
           await auth.signOut();
+          localStorage.removeItem('userAvatar');
           window.location.href = 'login.html';
         } catch (error) {
           console.error('Logout error:', error);
         }
       });
+    }
+
+    // Profil avatarını yüklə
+    const savedAvatar = localStorage.getItem('userAvatar');
+    if (savedAvatar) {
+      const profileIcon = document.getElementById('nav-profile-icon');
+      if (profileIcon) {
+        const isImage = savedAvatar.startsWith('http') || savedAvatar.startsWith('avatars/') || savedAvatar.includes('/') || savedAvatar.endsWith('.png') || savedAvatar.endsWith('.jpg');
+        if (isImage) {
+          profileIcon.innerHTML = `<img src="${savedAvatar}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+        } else {
+          profileIcon.textContent = savedAvatar;
+        }
+      }
     }
   </script>
 </body>

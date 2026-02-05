@@ -1,4 +1,4 @@
-// BDU Konspekt BankÃƒÆ’Ã¢â‚¬Å¾Ãƒâ€šÃ‚Â± - JavaScript
+// BDU Konspekt Bankı - JavaScript
 document.addEventListener('DOMContentLoaded', function(){
   // Hide loader when page is ready
   const loader = document.getElementById('loader');

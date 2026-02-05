@@ -45,9 +45,11 @@
         <a href="index.html">Ana səhifə</a>
         <a href="konspektler.html">Konspektlər</a>
         <a href="upload.html" class="active">Konspekt yüklə</a>
+        <a href="leaderboard.html">Liderlər</a>
         <a href="qaydalar.html">Qaydalar</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Əlaqə</a>
+        <a href="profile.html" class="profile-icon" id="nav-profile-icon" title="Profilim">👤</a>
         <a href="#" class="logout-btn" id="logout-btn">Çıxış</a>
       </nav>
     </div>
@@ -148,22 +150,81 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
 
+    let emailVerified = false;
+
     auth.onAuthStateChanged((user) => {
       if (!user) {
         window.location.href = 'login.html';
       } else {
         document.body.style.display = 'block';
+        // Google istifadəçiləri üçün emailVerified həmişə true
+        emailVerified = user.emailVerified || user.providerData.some(p => p.providerId === 'google.com');
+        
+        if (!emailVerified) {
+          showEmailVerificationWarning();
+        }
       }
     });
+
+    function showEmailVerificationWarning() {
+      const form = document.getElementById('upload-form');
+      const warning = document.createElement('div');
+      warning.style.cssText = 'background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:20px;border-radius:12px;margin-bottom:20px;text-align:center;';
+      warning.innerHTML = `
+        <p style="margin-bottom:10px;font-weight:600;">⚠️ E-poçt ünvanınız təsdiqlənməyib!</p>
+        <p style="margin-bottom:15px;font-size:14px;">Konspekt yükləmək üçün e-poçtunuzu təsdiqləməlisiniz.</p>
+        <button onclick="resendVerificationEmail()" style="background:#fff;color:#d97706;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;">Təsdiq e-poçtu göndər</button>
+      `;
+      form.parentNode.insertBefore(warning, form);
+      
+      // Formu deaktiv et
+      document.getElementById('submit-btn').disabled = true;
+      document.getElementById('submit-btn').style.opacity = '0.5';
+      document.getElementById('submit-btn').style.cursor = 'not-allowed';
+    }
+
+    async function resendVerificationEmail() {
+      try {
+        await auth.currentUser.sendEmailVerification();
+        alert('Təsdiq e-poçtu göndərildi! E-poçtunuzu yoxlayın.');
+      } catch (error) {
+        if (error.code === 'auth/too-many-requests') {
+          alert('Çox sayda cəhd. Bir az gözləyin.');
+        } else {
+          alert('Xəta baş verdi.');
+        }
+      }
+    }
 
     document.getElementById('logout-btn').addEventListener('click', async (e) => {
       e.preventDefault();
       await auth.signOut();
+      localStorage.removeItem('userAvatar');
       window.location.href = 'login.html';
     });
 
+    // Profil avatarını yüklə
+    const savedAvatar = localStorage.getItem('userAvatar');
+    if (savedAvatar) {
+      const profileIcon = document.getElementById('nav-profile-icon');
+      if (profileIcon) {
+        const isImage = savedAvatar.startsWith('http') || savedAvatar.startsWith('avatars/') || savedAvatar.includes('/') || savedAvatar.endsWith('.png') || savedAvatar.endsWith('.jpg');
+        if (isImage) {
+          profileIcon.innerHTML = `<img src="${savedAvatar}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+        } else {
+          profileIcon.textContent = savedAvatar;
+        }
+      }
+    }
+
     document.getElementById('upload-form').addEventListener('submit', async (e) => {
       e.preventDefault();
+      
+      // E-poçt təsdiqlənməyibsə, icazə vermə
+      if (!emailVerified) {
+        alert('Konspekt yükləmək üçün e-poçtunuzu təsdiqləməlisiniz!');
+        return;
+      }
       
       const btn = document.getElementById('submit-btn');
       const successMsg = document.getElementById('success-msg');

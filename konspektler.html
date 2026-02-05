@@ -346,10 +346,12 @@
         <a href="index.html">Ana səhifə</a>
         <a href="konspektler.html" class="active">Konspektlər</a>
         <a href="upload.html">Konspekt yüklə</a>
+        <a href="leaderboard.html">Liderlər</a>
         <a href="qaydalar.html">Qaydalar</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Əlaqə</a>
-        <a href="#" id="logout-btn">Hesabdan çıx</a>
+        <a href="profile.html" class="profile-icon" id="nav-profile-icon" title="Profilim">👤</a>
+        <a href="#" id="logout-btn">Çıxış</a>
       </nav>
     </div>
   </header>
@@ -463,8 +465,23 @@
     document.getElementById('logout-btn').addEventListener('click', async (e) => {
       e.preventDefault();
       await auth.signOut();
+      localStorage.removeItem('userAvatar');
       window.location.href = 'login.html';
     });
+
+    // Profil avatarını yüklə
+    const savedAvatar = localStorage.getItem('userAvatar');
+    if (savedAvatar) {
+      const profileIcon = document.getElementById('nav-profile-icon');
+      if (profileIcon) {
+        const isImage = savedAvatar.startsWith('http') || savedAvatar.startsWith('avatars/') || savedAvatar.includes('/') || savedAvatar.endsWith('.png') || savedAvatar.endsWith('.jpg');
+        if (isImage) {
+          profileIcon.innerHTML = `<img src="${savedAvatar}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+        } else {
+          profileIcon.textContent = savedAvatar;
+        }
+      }
+    }
 
     async function loadKonspektler() {
       const grid = document.getElementById('konspekt-grid');
