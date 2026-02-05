@@ -24,9 +24,32 @@
     .success-msg { background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; text-align: center; margin-top: 20px; display: none; }
     .error-msg { background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; text-align: center; margin-top: 20px; display: none; }
     .drive-steps { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 25px; }
-    .drive-steps h4 { color: #333; margin-bottom: 10px; }
+    .drive-steps h4 { color: #333; margin-bottom: 15px; }
     .drive-steps ol { margin: 0; padding-left: 20px; color: #555; }
     .drive-steps li { margin-bottom: 8px; }
+    
+    /* Upload Tabs */
+    .upload-tabs { display: flex; gap: 10px; }
+    .upload-tab { flex: 1; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; background: #fff; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+    .upload-tab.active { border-color: #667eea; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; }
+    .upload-tab:hover:not(.active) { border-color: #667eea; }
+    
+    /* File Upload Area */
+    .file-upload-area { border: 2px dashed #e0e0e0; border-radius: 12px; padding: 30px; text-align: center; cursor: pointer; transition: all 0.3s; background: #fafafa; }
+    .file-upload-area:hover, .file-upload-area.dragover { border-color: #667eea; background: #f0f4ff; }
+    .file-upload-content .file-icon { font-size: 3rem; margin-bottom: 10px; display: block; }
+    .file-upload-content p { margin: 5px 0; color: #666; }
+    .browse-link { color: #667eea; font-weight: 600; }
+    .file-hint { font-size: 0.85rem; color: #999; }
+    .file-selected { display: flex; align-items: center; justify-content: center; gap: 15px; }
+    .file-name { font-weight: 600; color: #333; }
+    .remove-file { background: #ff6b6b; color: #fff; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-size: 0.8rem; }
+    
+    /* Progress Bar */
+    .upload-progress { margin-top: 15px; }
+    .progress-bar { height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(135deg, #667eea, #764ba2); width: 0%; transition: width 0.3s; }
+    .progress-text { font-size: 0.85rem; color: #667eea; font-weight: 600; display: block; margin-top: 5px; text-align: center; }
   </style>
 </head>
 <body style="display:none;">
@@ -64,14 +87,11 @@
       <p class="subtitle">Konspektini paylaş, digər tələbələrə kömək et!</p>
 
       <div class="drive-steps">
-        <h4> Necə yükləmək olar?</h4>
-        <ol>
-          <li><a href="https://drive.google.com" target="_blank">Google Drive</a>-a gir</li>
-          <li>Faylını yüklə (PDF, DOCX, JPG və s.)</li>
-          <li>Faylın üzərinə sağ klik  <strong>"Paylaş"</strong></li>
-          <li><strong>"Linkə malik hər kəs"</strong> seç</li>
-          <li><strong>"Linki kopyala"</strong> və aşağıya yapışdır</li>
-        </ol>
+        <h4>📁 Fayl yükləmə üsulları</h4>
+        <div class="upload-tabs">
+          <button type="button" class="upload-tab active" data-tab="direct">📤 Birbaşa yüklə</button>
+          <button type="button" class="upload-tab" data-tab="link">🔗 Link ilə</button>
+        </div>
       </div>
 
       <form id="upload-form">
@@ -109,14 +129,34 @@
         </div>
 
         <div class="form-group">
-          <label for="fileURL">Google Drive linki *</label>
-          <input type="url" id="fileURL" required placeholder="https://drive.google.com/file/d/...">
-          <p class="help-text">Faylı <a href="https://drive.google.com" target="_blank">Google Drive</a>-a yüklə və linki bura yapışdır</p>
-        </div>
-
-        <div class="form-group">
           <label for="description">Açıqlama</label>
           <textarea id="description" placeholder="Konspekt haqqında qısa məlumat (optional)"></textarea>
+        </div>
+
+        <div class="form-group" id="file-upload-section">
+          <label for="fileInput">📄 Fayl seç (PDF, DOCX, JPG, PNG) *</label>
+          <div class="file-upload-area" id="file-upload-area">
+            <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.ppt,.pptx" style="display:none;">
+            <div class="file-upload-content">
+              <span class="file-icon">📂</span>
+              <p>Faylı bura sürüklə və ya <span class="browse-link">seçmək üçün kliklə</span></p>
+              <p class="file-hint">Maksimum: 10MB</p>
+            </div>
+            <div class="file-selected" style="display:none;">
+              <span class="file-name"></span>
+              <button type="button" class="remove-file">✕</button>
+            </div>
+          </div>
+          <div class="upload-progress" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+            <span class="progress-text">0%</span>
+          </div>
+        </div>
+
+        <div class="form-group" id="link-upload-section" style="display:none;">
+          <label for="fileURL">🔗 Fayl linki *</label>
+          <input type="url" id="fileURL" placeholder="https://drive.google.com/file/d/... və ya digər link">
+          <p class="help-text">Google Drive, Dropbox, OneDrive, Mega və s. linkləri dəstəklənir</p>
         </div>
 
         <button type="submit" class="btn-submit" id="submit-btn"> Göndər</button>
@@ -140,6 +180,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyC0pQKqXugTV3qBYTVH21mztdLAf5c5p2A",
@@ -152,6 +193,7 @@
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.firestore();
+    const storage = firebase.storage();
 
     let emailVerified = false;
 
@@ -189,7 +231,7 @@
     async function resendVerificationEmail() {
       try {
         await auth.currentUser.sendEmailVerification();
-        alert('Təsdiq e-poçtu göndərildi! E-poçtunuzu yoxlayın.');
+        alert('Təsdiq e-poçtu göndərildi! 📧 E-poçtunuzu və SPAM/Junk qovluğunu yoxlamayı unutmayın!');
       } catch (error) {
         if (error.code === 'auth/too-many-requests') {
           alert('Çox sayda cəhd. Bir az gözləyin.');
@@ -222,6 +264,120 @@
       });
     }
 
+    // Tab funksionallığı
+    let currentUploadType = 'direct';
+    let selectedFile = null;
+    
+    document.querySelectorAll('.upload-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.upload-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentUploadType = tab.dataset.tab;
+        
+        if (currentUploadType === 'direct') {
+          document.getElementById('file-upload-section').style.display = 'block';
+          document.getElementById('link-upload-section').style.display = 'none';
+        } else {
+          document.getElementById('file-upload-section').style.display = 'none';
+          document.getElementById('link-upload-section').style.display = 'block';
+        }
+      });
+    });
+
+    // Fayl yükləmə funksionallığı
+    const fileInput = document.getElementById('fileInput');
+    const uploadArea = document.getElementById('file-upload-area');
+    const fileUploadContent = uploadArea.querySelector('.file-upload-content');
+    const fileSelected = uploadArea.querySelector('.file-selected');
+    const fileNameSpan = uploadArea.querySelector('.file-name');
+    const removeFileBtn = uploadArea.querySelector('.remove-file');
+    const uploadProgress = document.querySelector('.upload-progress');
+    const progressFill = document.querySelector('.progress-fill');
+    const progressText = document.querySelector('.progress-text');
+
+    uploadArea.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('remove-file')) {
+        fileInput.click();
+      }
+    });
+    
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+    
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        handleFileSelect(files[0]);
+      }
+    });
+    
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        handleFileSelect(e.target.files[0]);
+      }
+    });
+
+    removeFileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      selectedFile = null;
+      fileInput.value = '';
+      fileUploadContent.style.display = 'block';
+      fileSelected.style.display = 'none';
+    });
+
+    function handleFileSelect(file) {
+      const maxSize = 10 * 1024 * 1024; // 10MB
+      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+                           'image/jpeg', 'image/png', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'];
+      
+      if (file.size > maxSize) {
+        alert('Fayl həcmi 10MB-dan böyük ola bilməz!');
+        return;
+      }
+      
+      if (!allowedTypes.includes(file.type) && !file.name.match(/\.(pdf|doc|docx|jpg|jpeg|png|ppt|pptx)$/i)) {
+        alert('Yalnız PDF, Word, PowerPoint və şəkil faylları qəbul edilir!');
+        return;
+      }
+      
+      selectedFile = file;
+      fileNameSpan.textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)';
+      fileUploadContent.style.display = 'none';
+      fileSelected.style.display = 'flex';
+    }
+
+    async function uploadFileToStorage(file) {
+      const fileName = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      const storageRef = storage.ref('konspektler/' + fileName);
+      
+      const uploadTask = storageRef.put(file);
+      
+      return new Promise((resolve, reject) => {
+        uploadTask.on('state_changed',
+          (snapshot) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            progressFill.style.width = progress + '%';
+            progressText.textContent = Math.round(progress) + '%';
+          },
+          (error) => {
+            reject(error);
+          },
+          async () => {
+            const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
+            resolve(downloadURL);
+          }
+        );
+      });
+    }
+
     document.getElementById('upload-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       
@@ -235,6 +391,22 @@
       const successMsg = document.getElementById('success-msg');
       const errorMsg = document.getElementById('error-msg');
       
+      let fileURL = '';
+      
+      // Fayl və ya link yoxlama
+      if (currentUploadType === 'direct') {
+        if (!selectedFile) {
+          alert('Zəhmət olmasa fayl seçin!');
+          return;
+        }
+      } else {
+        fileURL = document.getElementById('fileURL').value;
+        if (!fileURL) {
+          alert('Zəhmət olmasa fayl linkini daxil edin!');
+          return;
+        }
+      }
+      
       btn.disabled = true;
       btn.textContent = ' Göndərilir...';
       successMsg.style.display = 'none';
@@ -243,11 +415,19 @@
       try {
         const user = auth.currentUser;
         
+        // Birbaşa yükləmə seçilibsə, faylı Firebase Storage-a yüklə
+        if (currentUploadType === 'direct') {
+          uploadProgress.style.display = 'flex';
+          btn.textContent = ' Fayl yüklənir...';
+          fileURL = await uploadFileToStorage(selectedFile);
+          uploadProgress.style.display = 'none';
+        }
+        
         await db.collection('konspektler').add({
           title: document.getElementById('title').value,
           subject: document.getElementById('subject').value,
           faculty: document.getElementById('faculty').value,
-          fileURL: document.getElementById('fileURL').value,
+          fileURL: fileURL,
           description: document.getElementById('description').value,
           status: 'pending',
           uploadedBy: user.email,
@@ -258,10 +438,16 @@
 
         successMsg.style.display = 'block';
         document.getElementById('upload-form').reset();
+        selectedFile = null;
+        fileUploadContent.style.display = 'block';
+        fileSelected.style.display = 'none';
+        progressFill.style.width = '0%';
+        progressText.textContent = '0%';
       } catch (error) {
         console.error('Error:', error);
         errorMsg.textContent = ' Xəta: ' + error.message;
         errorMsg.style.display = 'block';
+        uploadProgress.style.display = 'none';
       }
 
       btn.disabled = false;

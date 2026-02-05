@@ -601,14 +601,14 @@
         // E-poçt təsdiqləmə linki göndər
         await userCredential.user.sendEmailVerification();
         
-        showSuccess('Qeydiyyat uğurlu! E-poçtunuza təsdiq linki göndərildi. Zəhmət olmasa e-poçtunuzu yoxlayın.');
+        showSuccess('Qeydiyyat uğurlu! E-poçtunuza təsdiq linki göndərildi. 📧 E-poçtunuzu və SPAM/Junk qovluğunu yoxlamağı unutmayın!');
         registerBtn.disabled = false;
         registerBtn.textContent = 'Qeydiyyatdan keç';
         
-        // 3 saniyə sonra login səhifəsinə yönləndir
+        // 5 saniyə sonra login səhifəsinə yönləndir
         setTimeout(() => {
           window.location.href = 'login.html';
-        }, 3000);
+        }, 5000);
       } catch (error) {
         showError(getErrorMessage(error.code));
         registerBtn.disabled = false;

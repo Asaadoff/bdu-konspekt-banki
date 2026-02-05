@@ -224,7 +224,7 @@
     async function resendVerificationEmail() {
       try {
         await auth.currentUser.sendEmailVerification();
-        alert('Təsdiq e-poçtu göndərildi! E-poçtunuzu yoxlayın.');
+        alert('Təsdiq e-poçtu göndərildi! 📧 E-poçtunuzu və SPAM/Junk qovluğunu yoxlamayı unutmayın!');
       } catch (error) {
         if (error.code === 'auth/too-many-requests') {
           alert('Çox sayda cəhd. Bir az gözləyin və yenidən cəhd edin.');

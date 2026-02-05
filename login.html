@@ -671,7 +671,7 @@
       
       try {
         await auth.sendPasswordResetEmail(email);
-        showSuccess('Şifrə sıfırlama linki e-mailinizə göndərildi');
+        showSuccess('Şifrə sıfırlama linki e-mailinizə göndərildi. 📧 E-poçtunuzu və SPAM/Junk qovluğunu yoxlamağı unutmayın!');
       } catch (error) {
         showError(getErrorMessage(error.code));
       }
