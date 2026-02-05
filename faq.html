@@ -25,11 +25,12 @@
           <h1>BDU Konspekt Bankı</h1>
         </a>
       </div>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Menyu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="header-right">
+        <a href="profile.html" class="mobile-profile-icon" id="mobile-profile-icon" title="Profilim">👤</a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menyu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
       <nav class="top-nav" id="top-nav">
         <a href="index.html">Ana səhifə</a>
         <a href="konspektler.html">Konspektlər</a>
@@ -195,15 +196,17 @@
     // Profil avatarını yüklə
     const savedAvatar = localStorage.getItem('userAvatar');
     if (savedAvatar) {
-      const profileIcon = document.getElementById('nav-profile-icon');
-      if (profileIcon) {
-        const isImage = savedAvatar.startsWith('http') || savedAvatar.startsWith('avatars/') || savedAvatar.includes('/') || savedAvatar.endsWith('.png') || savedAvatar.endsWith('.jpg');
-        if (isImage) {
-          profileIcon.innerHTML = `<img src="${savedAvatar}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
-        } else {
-          profileIcon.textContent = savedAvatar;
+      const profileIcons = [document.getElementById('nav-profile-icon'), document.getElementById('mobile-profile-icon')];
+      profileIcons.forEach(profileIcon => {
+        if (profileIcon) {
+          const isImage = savedAvatar.startsWith('http') || savedAvatar.startsWith('avatars/') || savedAvatar.includes('/') || savedAvatar.endsWith('.png') || savedAvatar.endsWith('.jpg');
+          if (isImage) {
+            profileIcon.innerHTML = `<img src="${savedAvatar}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+          } else {
+            profileIcon.textContent = savedAvatar;
+          }
         }
-      }
+      });
     }
   </script>
 </body>
